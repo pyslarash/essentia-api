@@ -1,0 +1,40 @@
+# Exclude .env file
+.env
+
+# Exclude models directory
+models/
+
+# Exclude essentia directory
+essentia/
+
+# Python-specific ignores
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment directories
+venv/
+env/
+
+# Byte-compiled files
+*.pyo
+*.pyc
+*.pyd
+
+# Logs
+*.log
+
+# Cache and temporary files
+*.cache
+*.tmp
+*.swp
+
+# OS-specific ignores
+.DS_Store
+Thumbs.db
+
+# Docker files
+*.pid
+*.tar
+*~backup

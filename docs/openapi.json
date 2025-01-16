@@ -1,0 +1,2119 @@
+openapi: 3.0.0
+info:
+  title: essentia
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:9878
+tags:
+  - name: Context
+  - name: Genre Detector
+  - name: Instruments
+  - name: Mood
+  - name: Music Cultures
+  - name: Process
+  - name: Spotify
+  - name: Song Styles
+paths:
+  /api/context/approachability:
+    post:
+      tags:
+        - Context
+      summary: approachability
+      description: >-
+        ### POST /api/context/approachability
+
+
+        This endpoint predicts the accessibility of a music track to a general
+        audience, categorizing the results as **approachable**, **neutral**, or
+        **unapproachable** based on whether the music aligns with mainstream
+        genres or leans toward niche and experimental styles.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "approachability": {
+                "Approachable": 0,
+                "Neutral": 0,
+                "Unapproachable": 0
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/context/arouseness-emomusic-musicnn:
+    post:
+      tags:
+        - Context
+      summary: arouseness-emomusic-musicnn
+      description: >-
+        ### POST /api/context/arouseness-emomusic-musicnn
+
+
+        This endpoint performs regression analysis to predict the arousal and
+        valence values of a given music track using the emoMusic dataset. These
+        values represent the emotional characteristics of the music, with
+        **arousal** indicating the energy or intensity of the track and
+        **valence** reflecting its positivity or negativity.
+
+
+        The endpoint leverages the **MusicNN model**, which is specifically
+        designed for music emotion recognition, ensuring accurate and reliable
+        predictions based on audio input.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "arouseness_em": {
+                "arousal": 0,
+                "valence": 0
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/context/arouseness-emomusic-vggish:
+    post:
+      tags:
+        - Context
+      summary: arouseness-emomusic-vggish
+      description: >-
+        ### POST /api/context/arouseness-emomusic-vggish
+
+
+        This endpoint performs regression analysis to predict the arousal and
+        valence values of a given music track using the emoMusic dataset. These
+        values represent the emotional characteristics of the music, with
+        **arousal** indicating the energy or intensity of the track and
+        **valence** reflecting its positivity or negativity.
+
+
+        The endpoint leverages the **VGGish model**, a pre-trained neural
+        network optimized for audio analysis, ensuring accurate and reliable
+        predictions based on the provided audio input.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+          "arouseness_ev": {
+            "arousal": 0,
+            "valence": 0
+          }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/context/arouseness-muse-musicnn:
+    post:
+      tags:
+        - Context
+      summary: arouseness-muse-musicnn
+      description: >-
+        ### POST /api/context/arouseness-muse-musicnn
+
+
+        This endpoint performs regression analysis to predict the arousal and
+        valence values of a given music track using the MuSe dataset. These
+        values capture the emotional dimensions of the music, with **arousal**
+        representing its energy or intensity and **valence** reflecting its
+        positivity or negativity.
+
+
+        The endpoint leverages the **MusicNN model**, which is tailored for
+        music emotion recognition, providing precise and reliable predictions
+        based on the audio input.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "arouseness_mm": {
+                "arousal": 0,
+                "valence": 0
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/context/arouseness-muse-vggish:
+    post:
+      tags:
+        - Context
+      summary: arouseness-muse-vggish
+      description: >-
+        ### POST /api/context/arouseness-muse-vggish
+
+
+        This endpoint performs regression analysis to predict the arousal and
+        valence values of a given music track using the MuSe dataset. These
+        values capture the emotional dimensions of the music, with **arousal**
+        representing its energy or intensity and **valence** reflecting its
+        positivity or negativity.
+
+
+        The endpoint leverages the **VGGish model**, a pre-trained neural
+        network optimized for audio analysis, ensuring precise and reliable
+        predictions based on the provided audio input.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "arouseness_mv": {
+                "arousal": 0,
+                "valence": 0
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/context/audio-events:
+    post:
+      tags:
+        - Context
+      summary: audio-events
+      description: >-
+        ### POST /api/context/audio-events
+
+
+        This endpoint performs **audio event recognition** using the
+        **AudioSet-YAMNet model**, classifying audio input into one or more of
+        **520 distinct audio event classes**. These classes span a wide range of
+        categories, including speech, music, environmental sounds, animal
+        noises, mechanical sounds, and more.
+
+
+        The endpoint is ideal for applications requiring detailed and accurate
+        audio classification, leveraging the YAMNet model's pre-trained
+        capabilities for robust performance in identifying complex sound
+        patterns.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "audio_events": ["<extracted_event_1>", "<extracted_event_2>", ...]
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/context/danceability:
+    post:
+      tags:
+        - Context
+      summary: danceability
+      description: >-
+        ### POST /api/context/danceability
+
+
+        This endpoint classifies the **danceability** of a music track into
+        **two classes**, indicating whether the track is suitable for dancing.
+
+
+        The endpoint utilizes the **VGGish model**, a pre-trained neural network
+        optimized for audio analysis, ensuring reliable and precise
+        classification based on the provided audio input.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+          "danceability": {
+            "danceable": 0,
+            "not_danceable": 0
+          }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/context/engagement:
+    post:
+      tags:
+        - Context
+      summary: engagement
+      description: >-
+        ### POST /api/context/engagement
+
+
+        This endpoint predicts the level of **engagement** a music track evokes
+        in the listener. It determines whether the music encourages **active
+        attention** and focused listening (high-engagement "lean forward") or
+        serves as **background listening** (low-engagement "lean back").
+
+
+        The classification results are categorized as **disengaged**,
+        **neutral**, or **engaged**, providing insights into the listener's
+        likely interaction with the track.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "engagement": {
+                "Disengaged": 0,
+                "Engaged": 0,
+                "Neutral": 0
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/context/gender:
+    post:
+      tags:
+        - Context
+      summary: gender
+      description: >-
+        ### POST /api/context/gender
+
+
+        This endpoint classifies music tracks based on the **singing voice
+        gender**, categorizing the vocal content into **two classes**:
+        **female** or **male**.
+
+
+        The endpoint uses the **VGGish model**, a pre-trained neural network
+        optimized for audio analysis, to ensure precise and reliable
+        classification of the singing voice.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "gender": {
+                "female": 0,
+                "male": 0
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/context/instrumental:
+    post:
+      tags:
+        - Context
+      summary: instrumental
+      description: >-
+        ### POST /api/context/instrumental
+
+
+        This endpoint classifies music tracks based on the **presence or absence
+        of vocals**, categorizing them into **two classes**: **instrumental**
+        (no vocals) or **voice** (with vocals).
+
+
+        The endpoint leverages the **VGGish model**, a pre-trained neural
+        network optimized for audio analysis, ensuring accurate and reliable
+        classification of vocal presence in the provided audio input.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "instrumental": {
+                "instrumental": 0,
+                "voice": 0
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/context/timbre:
+    post:
+      tags:
+        - Context
+      summary: timbre
+      description: >-
+        ### POST /api/context/timbre
+
+
+        This endpoint classifies music tracks based on their **timbre color**,
+        categorizing them into **two classes**: **bright** or **dark**.
+
+
+        The classification provides insights into the tonal quality of the
+        music, and the endpoint ensures accurate results using advanced audio
+        analysis techniques.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+          "timbre": {
+            "bright": 0,
+            "dark": 0
+          }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/context/tonality:
+    post:
+      tags:
+        - Context
+      summary: tonality
+      description: >-
+        ### POST /api/context/tonality
+
+
+        This endpoint classifies music tracks based on their **tonality**,
+        categorizing them into **two classes**: **tonal** (music with a clear
+        key or tonal center) or **atonal** (music lacking a tonal center).
+
+
+        The endpoint leverages the **VGGish model**, a pre-trained neural
+        network optimized for audio analysis, ensuring precise and reliable
+        classification of the track's tonal characteristics.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "tonality": {
+                "atonal": 0,
+                "tonal": 0
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/genre-detector/discogs:
+    post:
+      tags:
+        - Genre Detector
+      summary: discogs
+      description: >-
+        ### POST /api/genre-detector/discogs
+
+
+        This endpoint classifies music tracks into one of **400 distinct
+        styles** based on the Discogs taxonomy, spanning genres like **Blues**,
+        **Electronic**, **Jazz**, **Rock**, and many others. The classification
+        offers a detailed breakdown, including the **main genre**, **primary
+        genre**, and **secondary genre** of the music.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "genres": {
+                "main_genre": "string",
+                "primary_genre": "string",
+                "secondary_genre": "string"
+            }
+        }
+
+         ```
+
+        - `main_genre` (string): The main genre detected for the provided audio
+        file.
+            
+        - `primary_genre` (string): The primary genre detected for the provided
+        audio file.
+            
+        - `secondary_genre` (string): The secondary genre detected for the
+        provided audio file.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/genre-detector/discogs-routenote:
+    post:
+      tags:
+        - Genre Detector
+      summary: discogs-routenote
+      description: >-
+        ### POST /api/genre-detector/discogs-routenote
+
+
+        This endpoint maps music genres from the **Discogs taxonomy** to the
+        corresponding genres available on **RouteNote**, ensuring compatibility
+        for music distribution platforms. The input genre is matched with
+        RouteNote's supported genres, simplifying the process of assigning
+        appropriate categories for distribution.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "routenote_genres": [
+                "<genre_1>", "<genre_2>"
+            ]
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/genre-detector/discogs-spotify:
+    post:
+      tags:
+        - Genre Detector
+      summary: discogs-spotify
+      description: >-
+        ### POST /api/genre-detector/discogs-spotify
+
+
+        This endpoint maps music genres from the **Discogs taxonomy** to
+        corresponding genres available on **Spotify**, allowing for seamless
+        integration and accurate genre categorization for music tracks. The
+        output includes up to **three Spotify-compatible genres**, ensuring
+        comprehensive representation of the track's style.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "spotify_genres": [
+                "<genre_1>",
+                "<genre_2>",
+                "<genre_3>"
+            ]
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/genre-detector/jamendo:
+    post:
+      tags:
+        - Genre Detector
+      summary: jamendo
+      description: >-
+        ### POST /api/genre-detector/jamendo
+
+
+        This endpoint performs **multi-label genre classification** for music
+        tracks using the genre subset of the **MTG-Jamendo Dataset**, which
+        includes **87 distinct genres**. The classification allows for
+        identifying multiple genres associated with a single music track,
+        providing a comprehensive view of its stylistic elements.
+
+
+        #### Supported Genres:
+
+
+        Examples include **60s**, **acidjazz**, **ambient**, **classical**,
+        **disco**, **jazz**, **metal**, **pop**, **rock**, **swing**,
+        **techno**, **world**, and many more.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "genres": ["<genre_1>", "<genre_2>", ...]
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/genre-detector/jamendo-routenote:
+    post:
+      tags:
+        - Genre Detector
+      summary: jamendo-routenote
+      description: >-
+        ### POST /api/genre-detector/jamendo-routenote
+
+
+        This endpoint maps genres from the **MTG-Jamendo dataset** to the
+        corresponding genres available on **RouteNote**, ensuring compatibility
+        for music distribution platforms. Multiple genres can be mapped to their
+        RouteNote equivalents, providing a simplified and streamlined
+        categorization process.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "routenote_genres": [
+                "<genre_1>",
+                "<genre_2>"
+            ]
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/genre-detector/jamendo-spotify:
+    post:
+      tags:
+        - Genre Detector
+      summary: jamendo-spotify
+      description: >-
+        ### POST /api/genre-detector/jamendo-spotify
+
+
+        This endpoint maps genres from the **MTG-Jamendo dataset** to
+        corresponding genres available on **Spotify**, enabling accurate
+        categorization for music tracks on the Spotify platform. The output
+        includes up to **three Spotify-compatible genres**, ensuring concise and
+        relevant representation.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "spotify_genres": ["<genre_1>", "<genre_2>", "<genre_3>"]
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/instruments/instruments:
+    post:
+      tags:
+        - Instruments
+      summary: instruments
+      description: >-
+        ### POST /api/instruments/instruments
+
+
+        This endpoint performs **multi-label classification** to identify
+        musical instruments present in a track, using the instrument subset of
+        the **MTG-Jamendo Dataset**, which includes **40 distinct instrument
+        classes**. Multiple instruments can be detected in a single track,
+        providing a comprehensive analysis of its instrumental composition.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "instruments": ["<instrument_1", "<instrument_2>", etc]
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/instruments/instruments-spotify:
+    post:
+      tags:
+        - Instruments
+      summary: instruments-spotify
+      description: >-
+        ### POST /api/instruments/instruments-spotify
+
+
+        This endpoint performs **multi-label classification** to identify
+        instruments present in a track using the instrument subset of the
+        **MTG-Jamendo Dataset** and maps them to the corresponding instruments
+        available on **Spotify**. The output provides a concise list of
+        Spotify-compatible instruments detected in the track.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "spotify_instruments": [
+                "<instrument_1>",
+                "<instrument_2>",
+                "<instrument_3>",
+                etc
+            ]
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/mood/acoustic:
+    post:
+      tags:
+        - Mood
+      summary: acoustic
+      description: >-
+        ### POST /api/mood/acoustic
+
+
+        This endpoint classifies music tracks based on their **type of sound**,
+        categorizing them into **two classes**: **acoustic** (natural,
+        non-electronic sounds) or **non_acoustic** (electronic or synthesized
+        sounds).
+
+
+        The endpoint leverages the **VGGish model**, a pre-trained neural
+        network optimized for audio analysis, to ensure accurate and reliable
+        classification.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+          "acoustic": {
+            "acoustic": 0,
+            "non_acoustic": 0
+          }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/mood/aggressive:
+    post:
+      tags:
+        - Mood
+      summary: aggressive
+      description: >-
+        ### POST /api/mood/aggressive
+
+
+        This endpoint classifies music tracks based on their **mood**,
+        categorizing them into **two classes**: **aggressive** (intense or
+        forceful mood) or **non_aggressive** (calm or subdued mood).
+
+
+        The endpoint utilizes the **VGGish model**, a pre-trained neural network
+        optimized for audio analysis, to ensure accurate and reliable
+        classification.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "aggressive": {
+                "aggressive": 0,
+                "non_aggressive": 0
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/mood/electronic:
+    post:
+      tags:
+        - Mood
+      summary: electronic
+      description: >-
+        ## POST /api/mood/electronic
+
+
+        This endpoint classifies music tracks based on their **type of sound**,
+        categorizing them into **two classes**: **electronic** (synthesized or
+        digitally produced sounds) or **non_electronic** (natural or acoustic
+        sounds).
+
+
+        The endpoint leverages the **VGGish model**, a pre-trained neural
+        network optimized for audio analysis, to provide accurate and reliable
+        classification.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "electronic": {
+                "electronic": 0,
+                "non_electronic": 0
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/mood/happy:
+    post:
+      tags:
+        - Mood
+      summary: happy
+      description: >-
+        ## POST /api/mood/happy
+
+
+        This endpoint classifies music tracks based on their **mood**,
+        categorizing them into **two classes**: **happy** (upbeat or positive
+        mood) or **non_happy** (neutral or negative mood).
+
+
+        The endpoint utilizes the **VGGish model**, a pre-trained neural network
+        optimized for audio analysis, ensuring accurate and reliable
+        classification.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "happy": {
+                "happy": 0,
+                "non_happy": 0
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/mood/spotify:
+    post:
+      tags:
+        - Mood
+      summary: spotify
+      description: >-
+        ## POST /api/mood/spotify
+
+
+        This endpoint classifies music tracks based on their **mood and theme**
+        using the **MTG-Jamendo mood and theme subset**, which includes **56
+        distinct classes**. The identified moods and themes are then mapped to
+        the corresponding **Spotify-compatible moods**, ensuring seamless
+        integration and compatibility with Spotify's metadata.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "mood_spotify": [
+                "<mood_1>",
+                "<mood_2>"
+            ]
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/mood/jamendo-mood-theme:
+    post:
+      tags:
+        - Mood
+      summary: jamendo-mood-theme
+      description: >-
+        ## POST /api/mood/jamendo-mood-theme
+
+
+        This endpoint performs **multi-label classification** to identify the
+        **moods and themes** present in a music track using the mood and theme
+        subset of the **MTG-Jamendo Dataset**, which includes **56 distinct
+        classes**. Multiple moods and themes can be associated with a single
+        track, providing a comprehensive analysis of its emotional and thematic
+        characteristics.
+
+
+        #### Supported Moods and Themes:
+
+
+        Examples include **action**, **adventure**, **calm**, **happy**,
+        **melancholic**, **romantic**, **uplifting**, **dramatic**, **party**,
+        **relaxing**, and many more.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "jamendo_mood_theme": [
+                "<mood_theme_1>",
+                "<mood_theme_2>",
+                "<mood_theme_3>"
+            ]
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/mood/mirex:
+    post:
+      tags:
+        - Mood
+      summary: mirex
+      description: >-
+        ## POST /api/mood/mirex
+
+
+        This endpoint classifies music tracks based on their **mood cluster**
+        using the **MIREX Audio Mood Classification Dataset**, which includes
+        **5 distinct mood clusters**. Each cluster represents a group of related
+        emotional characteristics, providing a detailed mood analysis of the
+        track.
+
+
+        #### Mood Clusters:
+
+
+        1. **Passionate, Rousing, Confident, Boisterous, Rowdy**
+            
+        2. **Rollicking, Cheerful, Fun, Sweet, Amiable/Good Natured**
+            
+        3. **Literate, Poignant, Wistful, Bittersweet, Autumnal, Brooding**
+            
+        4. **Humorous, Silly, Campy, Quirky, Whimsical, Witty, Wry**
+            
+        5. **Aggressive, Fiery, Tense/Anxious, Intense, Volatile, Visceral**
+            
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "mirex": {
+                "aggressive, fiery, tense/anxious, intense, volatile, visceral": 0,
+                "humorous, silly, campy, quirky, whimsical, witty, wry": 0,
+                "literate, poignant, wistful, bittersweet, autumnal, brooding": 0,
+                "passionate, rousing, confident, boisterous, rowdy": 0,
+                "rollicking, cheerful, fun, sweet, amiable/good natured": 0
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/mood/party:
+    post:
+      tags:
+        - Mood
+      summary: party
+      description: >-
+        ## POST /api/mood/party
+
+
+        This endpoint classifies music tracks based on their **mood**,
+        categorizing them into **two classes**: **party** (energetic and upbeat,
+        suitable for social gatherings) or **non_party** (calm or less
+        energetic).
+
+
+        The endpoint utilizes the **VGGish model**, a pre-trained neural network
+        optimized for audio analysis, to ensure accurate and reliable
+        classification.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "party": {
+                "non_party": 0,
+                "party": 0
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/mood/relaxed:
+    post:
+      tags:
+        - Mood
+      summary: relaxed
+      description: >-
+        ## POST /api/mood/relaxed
+
+
+        This endpoint classifies music tracks based on their **mood**,
+        categorizing them into **two classes**: **relaxed** (calm and soothing)
+        or **non_relaxed** (energetic or tense).
+
+
+        The endpoint leverages the **VGGish model**, a pre-trained neural
+        network optimized for audio analysis, to ensure accurate and reliable
+        classification.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "relaxed": {
+                "non_relaxed": 0,
+                "relaxed": 0
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/mood/sad:
+    post:
+      tags:
+        - Mood
+      summary: sad
+      description: >-
+        ## POST /api/mood/sad
+
+
+        This endpoint classifies music tracks based on their **type of sound**,
+        categorizing them into **two classes**: **electronic** (synthesized or
+        digitally produced sounds) or **non_electronic** (natural or acoustic
+        sounds).
+
+
+        The endpoint leverages the **VGGish model**, a pre-trained neural
+        network optimized for audio analysis, to provide accurate and reliable
+        classification.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "sad": {
+                "non_sad": 0,
+                "sad": 0
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/music-cultures/discogs-spotify:
+    post:
+      tags:
+        - Music Cultures
+      summary: discogs-spotify
+      description: >-
+        ## POST /api/music-cultures/discogs-spotify
+
+
+        This endpoint maps music genres and styles from the **Discogs400
+        taxonomy** to their corresponding **Spotify music cultures**, enabling
+        seamless integration for music categorization on Spotify. The input
+        genres and styles are aligned with Spotify's ecosystem, simplifying the
+        process of assigning music to culturally relevant categories.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "music_cultures": [
+                "<music_culture_1>",
+                "<music_culture_2>"
+            ]
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/music-cultures/jamendo-spotify:
+    post:
+      tags:
+        - Music Cultures
+      summary: jamendo-spotify
+      description: >-
+        ## POST /api/music-cultures/jamendo-spotify
+
+
+        This endpoint maps music genres from the **MTG-Jamendo Dataset** to
+        corresponding **Spotify music cultures**, ensuring accurate
+        categorization for Spotify's platform. It supports multi-label
+        classification, allowing tracks to be mapped to multiple relevant
+        Spotify music cultures.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "music_cultures": [
+                "<music_culture_1>",
+                "<music_culture_2>"
+            ]
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/process/spotify/discogs:
+    post:
+      tags:
+        - Spotify
+      summary: discogs
+      description: >-
+        ## POST /api/process/spotify/discogs
+
+
+        This endpoint combines genre classification from the **Discogs400
+        taxonomy** and instrument detection from the **MTG-Jamendo instrument
+        subset** to provide the necessary information for pitching music to
+        **Spotify curated playlists**. By identifying the music's detailed
+        style, genre, and instrumentation, it aligns the track with the
+        preferences of Spotify's curated playlist editors.
+
+
+        #### Features:
+
+
+        - **Genre Classification**: Detects the specific style of music using
+        Discogs400, with genres spanning Blues, Electronic, Jazz, Rock,
+        Classical, and more.
+            
+        - **Instrument Detection**: Identifies up to 40 different instruments in
+        a track, including acoustic and electric guitars, piano, drums, brass,
+        and strings.
+            
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "spotify_pith_info": {
+                "Spotify Genres": [
+                    "<genre_1>",
+                    "<genre_2>"
+                ],
+                "Spotify Instruments": [
+                    "<instrument_1>",
+                    "<instrument_2>",
+                    etc
+                ],
+                "Spotify Moods": [
+                    "<mood_1>",
+                    "<mood_2>"
+                ],
+                "Spotify Music Cultures": [
+                    "<culture_1>", etc
+                ],
+                "Spotify Song Styles": [
+                    "<song_style_1>",
+                    "<song_style_2>"
+                ]
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/process/spotify/jamendo:
+    post:
+      tags:
+        - Spotify
+      summary: jamendo
+      description: >-
+        ## POST /api/process/spotify/jamendo
+
+
+        This endpoint utilizes the **MTG-Jamendo genre and instrument subsets**
+        to extract detailed information about a music track's stylistic and
+        instrumental characteristics, aiding in pitching the track to **Spotify
+        curated playlists**. It identifies both the genre and instrumentation,
+        offering a comprehensive profile to align with Spotify's playlist
+        preferences.
+
+
+        #### Features:
+
+
+        - **Genre Classification**: Detects up to 87 genres, including blues,
+        ambient, hip-hop, jazz, reggae, electronic, rock, and world music.
+            
+        - **Instrument Detection**: Identifies up to 40 instruments, such as
+        acoustic guitar, drums, piano, saxophone, synthesizer, and voice.
+            
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "spotify_pith_info": {
+                "Spotify Genres": [
+                    "<genre_1>",
+                    "<genre_2>"
+                ],
+                "Spotify Instruments": [
+                    "<instrument_1>",
+                    "<instrument_2>",
+                    etc
+                ],
+                "Spotify Moods": [
+                    "<mood_1>",
+                    "<mood_2>"
+                ],
+                "Spotify Music Cultures": [
+                    "<culture_1>", etc
+                ],
+                "Spotify Song Styles": [
+                    "<song_style_1>",
+                    "<song_style_2>"
+                ]
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/process/track-analysis:
+    post:
+      tags:
+        - Process
+      summary: track-analysis
+      description: >-
+        ## POST /api/process/track-analysis
+
+
+        This endpoint analyzes a music track and provides detailed information
+        about its musical features, including **tempo**, **key**, **scale**,
+        **chords**, **loudness**, and **dynamic complexity**. The analysis is
+        designed to give users a comprehensive understanding of the track's
+        structure and characteristics, helping them explore its musical details.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "track_analysis": {
+                "beat_confidence": "<percentage>",
+                "bpm": <tempo>,
+                "chords": [
+                    [
+                        "<chord>",
+                        <timestamp>
+                    ],
+                    [
+                        "<chord>",
+                        <timestamp>
+                    ]
+                ],
+                "dynamic_complexity": int,
+                "key": "<key>",
+                "key_strength": "<percentage>",
+                "loudness": "<in db>",
+                "number_of_beats": <number_of_beats>,
+                "scale": "<scale>"
+            }
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/song-styles/discogs-spotify:
+    post:
+      tags:
+        - Song Styles
+      summary: discogs-spotify
+      description: >-
+        ## POST /api/song-styles/discogs-spotify
+
+
+        This endpoint maps music styles from the **Discogs400 taxonomy** to
+        their corresponding **Spotify song styles**, enabling seamless alignment
+        with Spotify's categorization system. The mapping ensures accurate
+        representation of the track's stylistic elements in Spotify-compatible
+        terms.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "music_styles": [
+                "<music_style_1>",
+                "<music_style_2>"
+            ]
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/song-styles/jamendo-spotify:
+    post:
+      tags:
+        - Song Styles
+      summary: jamendo-spotify
+      description: >-
+        ## POST /api/song-styles/jamendo-spotify
+
+
+        This endpoint maps music styles from the **MTG-Jamendo genre subset** to
+        their corresponding **Spotify song styles**, ensuring compatibility and
+        accurate representation of the track's stylistic attributes in Spotify's
+        ecosystem.
+
+
+        #### Request Body
+
+
+        - `file` (file): The audio file to be analyzed.
+            
+
+        #### Response
+
+
+        The response is a JSON object with the following schema:
+
+
+        ``` json
+
+        {
+            "music_styles": [
+                "<music_style_1>",
+                "<music_style_2>"
+            ]
+        }
+
+         ```
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
