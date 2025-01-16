@@ -62,4 +62,5 @@ def create_app():
 app = create_app()
 
 if __name__ == "__main__":
-    app.run(use_reloader=False, port=9878)
+    app.run(debug=True, use_reloader=False, host="0.0.0.0", port=9878)
+
